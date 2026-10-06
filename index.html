@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>국립부경대학교 컴퓨터·인공지능공학부</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#222;
+    font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+
+.page{
+    width:100%;
+    max-width:440px;
+    margin:0 auto;
+    background:#fff;
+    overflow:hidden;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    height:92px;
+    background:#fff;
+    border-bottom:1px solid #eee;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.header-logo{
+    width:calc(100% - 58px);
+    height:auto;
+    margin-left:10px;
+    display:block;
+}
+
+.menu-button{
+    position:absolute;
+    right:0;
+    top:0;
+    width:58px;
+    height:92px;
+    border:0;
+    border-left:1px solid #eee;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+}
+
+.menu-button span{
+    width:27px;
+    height:2px;
+    background:#333;
+    display:block;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:100%;
+    height:238px;
+    background-image:url("hero.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+.hero-center{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:68px;
+    height:58px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-center .circle{
+    width:31px;
+    height:31px;
+    border:4px solid white;
+    border-radius:50%;
+    position:absolute;
+}
+
+.hero-center .play{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:rgba(255,255,255,.85);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:0;
+}
+
+.hero-center .play:after{
+    content:"";
+    border-left:12px solid #222;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+    margin-left:3px;
+}
+
+/* ================= COMMON NOTICE ================= */
+
+.section{
+    padding:42px 18px 0;
+}
+
+.notice-tabs{
+    height:58px;
+    display:grid;
+    grid-template-columns:1fr 1fr 46px;
+    border:1px solid #dedede;
+}
+
+.notice-tab{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:15px;
+    white-space:nowrap;
+    border-right:1px solid #dedede;
+}
+
+.notice-tab.active{
+    background:#24398f;
+    color:#fff;
+    font-weight:700;
+}
+
+.notice-tab.plus{
+    font-size:30px;
+    color:#555;
+    border-right:0;
+    font-weight:300;
+}
+
+.notice-list{
+    width:100%;
+}
+
+.notice-row{
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    border-bottom:2px dashed #ddd;
+    padding:0 4px;
+    gap:5px;
+}
+
+.notice-row .bullet{
+    width:10px;
+    flex:none;
+    font-size:15px;
+}
+
+.notice-row .title{
+    flex:1;
+    min-width:0;
+    font-size:14px;
+    line-height:1.35;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.notice-row .date{
+    flex:none;
+    width:70px;
+    text-align:right;
+    color:#999;
+    font-size:12px;
+}
+
+/* ================= CAREER ================= */
+
+.career{
+    padding-top:82px;
+}
+
+/* ================= BLUE INFO BANNER ================= */
+
+.info-banner{
+    margin:48px 18px 50px;
+    width:calc(100% - 36px);
+    height:190px;
+    background:url("info_banner.jpg") center/cover no-repeat;
+}
+
+/* ================= INFO BANNER SLIDER ================= */
+.banner-slider{
+    position:relative;
+    margin:48px 18px 50px;
+    width:calc(100% - 36px);
+    height:190px;
+    overflow:hidden;
+    background:#f5f7fa;
+}
+.banner-track{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+.banner-slide{
+    position:absolute;
+    inset:0;
+    display:none;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.banner-slide.active{
+    display:block;
+}
+.banner-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:5;
+    width:34px;
+    height:54px;
+    border:0;
+    background:rgba(0,0,0,.18);
+    color:#fff;
+    font-size:34px;
+    line-height:1;
+    cursor:pointer;
+}
+.banner-prev{left:0;}
+.banner-next{right:0;}
+.banner-arrow:active{background:rgba(0,0,0,.35);}
+.banner-pause{
+    position:absolute;
+    right:10px;
+    top:10px;
+    z-index:5;
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.28);
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* ================= QUICK ICONS ================= */
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    row-gap:50px;
+    padding:0 48px;
+}
+
+.quick-item{
+    text-align:center;
+    color:#1e4088;
+}
+
+.icon{
+    width:58px;
+    height:58px;
+    margin:0 auto 14px;
+    color:#287dce;
+}
+
+.icon svg{
+    width:58px;
+    height:58px;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.quick-item p{
+    font-size:14px;
+    font-weight:500;
+    white-space:nowrap;
+}
+
+/* ================= PARTNER AREA ================= */
+.partner{
+    margin:62px 18px 0;
+    padding:22px 0 42px;
+    border-top:1px solid #ccc;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.slider-buttons{display:flex;flex:none;}
+.slider-buttons button{
+    width:30px;height:38px;border:0;background:transparent;
+    display:flex;align-items:center;justify-content:center;font-size:25px;color:#555;
+    cursor:pointer;
+}
+.partner-slides{position:relative;flex:1;min-width:0;height:78px;overflow:hidden;}
+.partner-slide{display:none;height:100%;width:100%;align-items:center;justify-content:center;}
+.partner-slide.active{display:flex;}
+.partner-slide img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;}
+
+
+/* ================= FOOTER ================= */
+
+.footer-top{
+    height:68px;
+    background:#0b2f59;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:17px;
+}
+
+.footer-top .down{
+    margin-left:12px;
+    font-size:28px;
+    transform:translateY(-3px);
+}
+
+.top{
+    position:absolute;
+    right:18px;
+    width:50px;
+    height:50px;
+    border:2px solid #8b8f96;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:15px;
+}
+
+.footer{
+    background:#e8f2ff;
+    text-align:center;
+    padding:42px 20px 70px;
+}
+
+.privacy{
+    color:#ff4d43;
+    font-size:15px;
+    margin-bottom:46px;
+}
+
+.address{
+    color:#555;
+    font-size:12px;
+    line-height:1.9;
+}
+
+.copyright{
+    color:#888;
+    font-size:11px;
+    line-height:1.7;
+    margin-top:38px;
+}
+
+/* ================= SMALL SCREEN ================= */
+
+@media(max-width:370px){
+    .header{
+        height:90px;
+    }
+
+    .menu-button{
+        height:90px;
+        width:54px;
+    }
+
+    .header-logo{
+        width:calc(100% - 55px);
+    }
+
+    .hero{
+        height:195px;
+    }
+
+    .notice-tab{
+        font-size:15px;
+    }
+
+    .notice-row .title{
+        font-size:14px;
+    }
+
+    .notice-row .date{
+        font-size:11px;
+        width:67px;
+    }
+
+    .quick-grid{
+        padding:0 38px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+        <img class="header-logo" src="header_logo.png" alt="국립부경대학교 컴퓨터·인공지능공학부">
+        <button class="menu-button" aria-label="메뉴">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-center">
+            <div class="circle"></div>
+            <div class="play"></div>
+        </div>
+    </section>
+
+    <!-- 학부 공지사항 -->
+    <section class="section">
+        <div class="notice-tabs">
+            <div class="notice-tab active">학부 공지사항</div>
+            <div class="notice-tab">일반대학원 공지사항</div>
+            <div class="notice-tab plus">＋</div>
+        </div>
+
+        <div class="notice-list">
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">2026학년도 컴퓨터·인공지능공학부 외국인 유학생 안내</span>
+                <span class="date">2026-10-06</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">전국 지역인재 7급 수습직원 선발시험 향후 변경 안내</span>
+                <span class="date">2026-10-06</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">2026-2학기 [발전기금]정호택 장학생 모집 안내</span>
+                <span class="date">2026-10-01</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">2027. 2월 / 2027. 8월 졸업예비사정 결과 확인</span>
+                <span class="date">2026-10-01</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">'26학년도 2학기 학생설계전공 신설 및 변경 신청</span>
+                <span class="date">2026-09-28</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">(학생성공지원과) 채용설명회 개최 안내</span>
+                <span class="date">2026-09-22</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 진로/취업 -->
+    <section class="section career">
+        <div class="notice-tabs">
+            <div class="notice-tab active">진로/취업 공지사항</div>
+            <div class="notice-tab">자료실</div>
+            <div class="notice-tab plus">＋</div>
+        </div>
+
+        <div class="notice-list">
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">[비알코리아x파리크라상x삼립] 2026년 하반기 채용</span>
+                <span class="date">2026-10-02</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">[램서치코리아] 학사/석사 신입 엔지니어 모집</span>
+                <span class="date">2026-10-02</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">[한국식품연구원] 2026년 제2차 정규직 및 무기계약직</span>
+                <span class="date">2026-09-29</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">[사단법인 굿네이버스 인터내셔날] 2027년 상반기 채용</span>
+                <span class="date">2026-09-29</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">[현대엘리베이터] 2026 하반기 현대엘리베이터 채용</span>
+                <span class="date">2026-09-29</span>
+            </div>
+
+            <div class="notice-row">
+                <span class="bullet">•</span>
+                <span class="title">[키엔스코리아] 2026년 하반기 컨설팅 세일즈</span>
+                <span class="date">2026-09-29</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO BANNER SLIDER -->
+    <section class="banner-slider">
+        <button class="banner-arrow banner-prev" type="button" aria-label="이전 배너">‹</button>
+        <div class="banner-track">
+            <img class="banner-slide active" src="info_banner.jpg" alt="기타 학사 안내사항">
+            <img class="banner-slide" src="https://ce.pknu.ac.kr/upload/2000903/banner/2026/02/05/42c08569-b588-4338-8b64-b46499849227.jpg" alt="공지용 단체채팅방">
+        </div>
+        <button class="banner-arrow banner-next" type="button" aria-label="다음 배너">›</button>
+        <div class="banner-pause">Ⅱ</div>
+    </section>
+
+    <!-- QUICK MENU -->
+    <section class="quick-grid">
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <rect x="10" y="14" width="44" height="40" rx="3"/>
+                    <line x1="10" y1="25" x2="54" y2="25"/>
+                    <line x1="20" y1="8" x2="20" y2="18"/>
+                    <line x1="32" y1="8" x2="32" y2="18"/>
+                    <line x1="44" y1="8" x2="44" y2="18"/>
+                    <line x1="20" y1="34" x2="20" y2="38"/>
+                    <line x1="32" y1="34" x2="32" y2="38"/>
+                    <line x1="44" y1="34" x2="44" y2="38"/>
+                    <line x1="20" y1="44" x2="20" y2="48"/>
+                    <line x1="32" y1="44" x2="32" y2="48"/>
+                </svg>
+            </div>
+            <p>학사일정</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <rect x="12" y="10" width="40" height="48" rx="2"/>
+                    <rect x="18" y="18" width="7" height="7"/>
+                    <line x1="31" y1="20" x2="45" y2="20"/>
+                    <line x1="31" y1="25" x2="42" y2="25"/>
+                    <rect x="18" y="32" width="7" height="7"/>
+                    <line x1="31" y1="34" x2="45" y2="34"/>
+                    <line x1="31" y1="39" x2="42" y2="39"/>
+                </svg>
+            </div>
+            <p>교육과정</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <circle cx="25" cy="22" r="9"/>
+                    <circle cx="43" cy="25" r="7"/>
+                    <path d="M10 50c0-10 7-16 15-16s15 6 15 16"/>
+                    <path d="M34 50c0-7 4-12 10-13 6 0 10 5 10 13"/>
+                </svg>
+            </div>
+            <p>교수진</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <rect x="9" y="9" width="46" height="46" rx="3"/>
+                    <path d="M19 41l8-8 7 6 12-15"/>
+                    <circle cx="45" cy="21" r="5"/>
+                    <line x1="45" y1="14" x2="45" y2="11"/>
+                    <line x1="45" y1="31" x2="45" y2="34"/>
+                    <line x1="38" y1="21" x2="35" y2="21"/>
+                    <line x1="52" y1="21" x2="55" y2="21"/>
+                </svg>
+            </div>
+            <p>졸업요건</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <rect x="7" y="14" width="50" height="36" rx="4"/>
+                    <line x1="15" y1="43" x2="49" y2="43"/>
+                    <line x1="20" y1="50" x2="44" y2="50"/>
+                    <polyline points="16,36 25,30 32,34 43,22"/>
+                    <circle cx="43" cy="22" r="2"/>
+                </svg>
+            </div>
+            <p>Smart-LMS</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <rect x="10" y="13" width="44" height="40" rx="3"/>
+                    <circle cx="23" cy="27" r="6"/>
+                    <path d="M15 43c1-7 5-10 8-10s7 3 8 10"/>
+                    <line x1="36" y1="25" x2="47" y2="25"/>
+                    <line x1="36" y1="32" x2="47" y2="32"/>
+                    <line x1="36" y1="39" x2="47" y2="39"/>
+                </svg>
+            </div>
+            <p>진로취업길라잡이</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <line x1="12" y1="51" x2="12" y2="30"/>
+                    <line x1="25" y1="51" x2="25" y2="20"/>
+                    <line x1="38" y1="51" x2="38" y2="34"/>
+                    <line x1="51" y1="51" x2="51" y2="13"/>
+                    <polyline points="9,27 23,17 36,28 51,10"/>
+                    <circle cx="23" cy="17" r="2"/>
+                    <circle cx="36" cy="28" r="2"/>
+                    <circle cx="51" cy="10" r="2"/>
+                </svg>
+            </div>
+            <p>취업현황</p>
+        </div>
+
+        <div class="quick-item">
+            <div class="icon">
+                <svg viewBox="0 0 64 64">
+                    <line x1="10" y1="17" x2="54" y2="17"/>
+                    <line x1="10" y1="47" x2="54" y2="47"/>
+                    <line x1="15" y1="17" x2="15" y2="47"/>
+                    <line x1="49" y1="17" x2="49" y2="47"/>
+                    <line x1="32" y1="8" x2="32" y2="56"/>
+                    <line x1="24" y1="28" x2="40" y2="28"/>
+                    <line x1="24" y1="36" x2="40" y2="36"/>
+                </svg>
+            </div>
+            <p>비교과프로그램</p>
+        </div>
+
+    </section>
+
+    <!-- PARTNER / BOTTOM BANNER SLIDER : 3~6번 -->
+    <section class="partner">
+        <div class="slider-buttons">
+            <button type="button" onclick="partnerMove(-1)" aria-label="이전 배너">‹</button>
+            <button type="button" onclick="partnerPause()" aria-label="일시정지">Ⅱ</button>
+            <button type="button" onclick="partnerMove(1)" aria-label="다음 배너">›</button>
+        </div>
+        <div class="partner-slides">
+            <div class="partner-slide active">
+                <img src="https://ce.pknu.ac.kr/upload/2000903/banner/2026/02/05/48a1b094-71f8-4a9f-8fe1-c956a25fb25f.png" alt="교내 배너 3">
+            </div>
+            <div class="partner-slide">
+                <img src="https://ce.pknu.ac.kr/upload/2000903/banner/2026/02/05/6823a6fa-178c-454e-b78f-4ae6cf6a3362.png" alt="교내 배너 4">
+            </div>
+            <div class="partner-slide">
+                <img src="https://ce.pknu.ac.kr/upload/2000903/banner/2026/02/05/c267586d-be3e-4989-8e96-568a4579b252.png" alt="교내 배너 5">
+            </div>
+            <div class="partner-slide">
+                <img src="https://ce.pknu.ac.kr/upload/2000903/banner/2026/02/05/e938e46f-3bf2-4efe-89cd-6f0b1dbc8af7.png" alt="교내 배너 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer-top">
+        교내 주요사이트
+        <span class="down">⌄</span>
+        <div class="top">TOP</div>
+    </div>
+
+    <footer class="footer">
+        <div class="privacy">개인정보처리방침</div>
+
+        <div class="address">
+            부산광역시 남구 용소로 45, 국립부경대학교 대연캠퍼스 누리관<br>
+            (A13) 1층 2131호 (대연동)<br>
+            FAX : 051-629-6264, 6230<br>
+            TEL : (수업·장학) 051-629-6261 / (학적·졸업) 051-629-6263<br>
+            (대학원) 051-629-6262 / (정보보호영재교육원) 051-629-5711
+        </div>
+
+        <div class="copyright">
+            COPYRIGHT(C) 2021 PUKYONG NATIONAL UNIVERSITY.<br>
+            ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+</div>
+
+<script>
+let bannerIndex=0;
+let bannerTimer=null;
+let bannerPaused=false;
+const banners=document.querySelectorAll('.banner-slide');
+const bannerPauseButton=document.querySelector('.banner-pause');
+function showBanner(i){
+    bannerIndex=(i+banners.length)%banners.length;
+    banners.forEach((b,n)=>b.classList.toggle('active',n===bannerIndex));
+}
+function startBannerAuto(){
+    clearInterval(bannerTimer);
+    if(!bannerPaused){
+        bannerTimer=setInterval(()=>showBanner(bannerIndex+1),4500);
+    }
+}
+document.querySelector('.banner-prev').addEventListener('click',()=>{showBanner(bannerIndex-1);startBannerAuto();});
+document.querySelector('.banner-next').addEventListener('click',()=>{showBanner(bannerIndex+1);startBannerAuto();});
+bannerPauseButton.addEventListener('click',()=>{
+    bannerPaused=!bannerPaused;
+    bannerPauseButton.textContent=bannerPaused?'▶':'Ⅱ';
+    startBannerAuto();
+});
+startBannerAuto();
+
+let partnerIndex=0;
+let partnerTimer=null;
+let partnerPaused=false;
+const partners=document.querySelectorAll('.partner-slide');
+const partnerPauseButton=document.querySelector('.slider-buttons button:nth-child(2)');
+function showPartner(i){
+    partnerIndex=(i+partners.length)%partners.length;
+    partners.forEach((p,n)=>p.classList.toggle('active',n===partnerIndex));
+}
+function startPartnerAuto(){
+    clearInterval(partnerTimer);
+    if(!partnerPaused){
+        partnerTimer=setInterval(()=>showPartner(partnerIndex+1),4500);
+    }
+}
+function partnerMove(dir){showPartner(partnerIndex+dir);startPartnerAuto();}
+function partnerPause(){
+    partnerPaused=!partnerPaused;
+    partnerPauseButton.textContent=partnerPaused?'▶':'Ⅱ';
+    startPartnerAuto();
+}
+startPartnerAuto();
+</script>
+
+</body>
+</html>
